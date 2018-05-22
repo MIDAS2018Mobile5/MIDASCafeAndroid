@@ -1,9 +1,5 @@
 language: android
 jdk: oraclejdk8
-os:
-  - linux
-dist:
-  - precise
 
 env:
   global:
@@ -25,16 +21,25 @@ android:
     - sys-img-armeabi-v7a-android-$ANDROID_API
     - sys-img-armeabi-v7a-android-$EMULATOR_API
   # - sys-img-armeabi-v7a-addon-google_apis-google-$EMULATOR_API
+  licenses:
+    - 'android-sdk-license-.+'
+    - 'google-gdk-license-.+'
 
-licenses:
-  - 'android-sdk-license-.+'
-  - 'google-gdk-license-.+'
 
 before_install:
   - mkdir "$ANDROID_HOME/licenses" || true
   - echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
   - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
-  - echo no | android create avd --force -n test -t android-27 --abi armeabi-v7a
+  - yes | sdkmanager "platforms;android-27"
+  - chmod +x gradlew
+  - ./gradlew dependencies || true
+
+
+before_script:
+  - echo no | android create avd --force --name test --target android-21 --abi armeabi-v7a
   - emulator -avd test -no-audio -no-window &
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
+
+script:
+  - "./gradlew clean build connectedCheck -PdisablePreDex --stacktrace"
