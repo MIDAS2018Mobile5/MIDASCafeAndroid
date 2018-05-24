@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main.LoginActivity">
+    tools:context=".main.activities.LoginActivity">
 
     <com.midas2018mobile5.mobileapp.main.widgets.ClearEditText
         android:id="@+id/account_ID"

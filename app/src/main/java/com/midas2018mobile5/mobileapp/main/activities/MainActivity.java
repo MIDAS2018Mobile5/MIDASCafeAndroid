@@ -1,4 +1,4 @@
-package com.midas2018mobile5.mobileapp.main;
+package com.midas2018mobile5.mobileapp.main.activities;
 
 import com.midas2018mobile5.mobileapp.R;
 import com.midas2018mobile5.mobileapp.base.BaseActivity;
