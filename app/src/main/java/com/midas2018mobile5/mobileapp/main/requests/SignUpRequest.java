@@ -11,9 +11,8 @@ import retrofit2.http.POST;
  * Created by Ji Hoon on 2018-05-24.
  */
 
-public interface LoginRequest {
-    @POST("/api/account/signin")
+public interface SignUpRequest {
+    @POST("/api/account/signup")
     @FormUrlEncoded
-    Call<LoginResponse> tryLogin(@Field("name") String userID, @Field("password") String userSecret);
-
+    Call<LoginResponse> trySignUp(@Field("name") String userID, @Field("password") String userSecret);
 }

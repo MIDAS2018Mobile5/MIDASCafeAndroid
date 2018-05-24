@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by Ji Hoon on 2018-05-24.
  */
 
-public class HttpRequest {
+public class APIClient {
     private static Retrofit retrofit = null;
     public static Retrofit getInstance() {
         if(retrofit==null) {

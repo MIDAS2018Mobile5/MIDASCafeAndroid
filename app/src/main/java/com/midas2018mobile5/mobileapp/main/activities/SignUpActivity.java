@@ -5,8 +5,8 @@ import android.view.View;
 
 import com.midas2018mobile5.mobileapp.R;
 import com.midas2018mobile5.mobileapp.base.BaseActivity;
-import com.midas2018mobile5.mobileapp.databinding.ActivityLoginBinding;
-import com.midas2018mobile5.mobileapp.main.requests.LoginRequest;
+import com.midas2018mobile5.mobileapp.databinding.ActivitySignupBinding;
+import com.midas2018mobile5.mobileapp.main.requests.SignUpRequest;
 import com.midas2018mobile5.mobileapp.main.responses.LoginResponse;
 import com.midas2018mobile5.mobileapp.main.utils.APIClient;
 
@@ -14,24 +14,26 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginActivity extends BaseActivity {
-    private ActivityLoginBinding binding;
+/**
+ * Created by Ji Hoon on 2018-05-24.
+ */
 
+public class SignUpActivity extends BaseActivity {
+    private ActivitySignupBinding binding;
     @Override
     protected int getLayoutResource() {
-        return R.layout.activity_login;
+        return R.layout.activity_signup;
     }
 
     @Override
     protected void onCreate() {
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_login);
-
-        binding.loginBtn.setOnClickListener(new View.OnClickListener() {
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_signup);
+        binding.btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                String id = binding.accountID.getText().toString();
-                String password = binding.accountPW.getText().toString();
-                APIClient.getInstance().create(LoginRequest.class).tryLogin(id,password)
+            public void onClick(View v) {
+                String id = binding.edtSignupId.getText().toString();
+                String password = binding.edtSignupPassword.getText().toString();
+                APIClient.getInstance().create(SignUpRequest.class).trySignUp(id,password)
                         .enqueue(new Callback<LoginResponse>() {
                             @Override
                             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
@@ -43,13 +45,6 @@ public class LoginActivity extends BaseActivity {
 
                             }
                         });
-            }
-        });
-
-        binding.signupBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
             }
         });
     }
