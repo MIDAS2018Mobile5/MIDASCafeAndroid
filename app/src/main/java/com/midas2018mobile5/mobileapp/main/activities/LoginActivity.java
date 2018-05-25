@@ -1,5 +1,6 @@
 package com.midas2018mobile5.mobileapp.main.activities;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.view.View;
 
@@ -55,7 +56,8 @@ public class LoginActivity extends BaseActivity {
         binding.signupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(LoginActivity.this,SignUpActivity.class);
+                startActivity(intent);
             }
         });
     }
