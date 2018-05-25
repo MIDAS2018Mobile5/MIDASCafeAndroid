@@ -1,6 +1,7 @@
 package com.midas2018mobile5.mobileapp.main.requests;
 
 import com.midas2018mobile5.mobileapp.main.responses.LoginResponse;
+import com.midas2018mobile5.mobileapp.main.responses.SignUpResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -14,5 +15,5 @@ import retrofit2.http.POST;
 public interface SignUpRequest {
     @POST("/api/account/signup")
     @FormUrlEncoded
-    Call<LoginResponse> trySignUp(@Field("name") String userID, @Field("password") String userSecret);
+    Call<SignUpResponse> trySignUp(@Field("name") String userID, @Field("password") String userSecret);
 }

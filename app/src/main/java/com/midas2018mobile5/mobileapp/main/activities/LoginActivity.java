@@ -35,7 +35,13 @@ public class LoginActivity extends BaseActivity {
                         .enqueue(new Callback<LoginResponse>() {
                             @Override
                             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-
+                                if(response.isSuccessful()) {
+                                    LoginResponse loginResponse = response.body();
+                                }
+                                else {
+                                    int code = response.raw().code();
+                                    String message = response.raw().message();
+                                }
                             }
 
                             @Override
