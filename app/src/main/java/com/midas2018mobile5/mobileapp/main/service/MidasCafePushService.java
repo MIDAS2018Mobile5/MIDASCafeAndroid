@@ -11,6 +11,7 @@ import android.util.Log;
 
 import com.midas2018mobile5.mobileapp.R;
 import com.midas2018mobile5.mobileapp.main.utils.NotificationHelper;
+import com.midas2018mobile5.mobileapp.main.utils.PrefManager;
 
 import org.eclipse.paho.android.service.MqttService;
 import org.eclipse.paho.client.mqttv3.IMqttActionListener;
@@ -29,6 +30,7 @@ public class MidasCafePushService extends MqttService implements MqttCallbackExt
     private MqttAsyncClient midasPushservice;
     private static final String TAG = "[MidasCafe_PUSH]";
     private static String msgBox;
+    private PrefManager manager;
 
     public MidasCafePushService() {
         this.clientID = "MIDASCafeClient";
@@ -36,6 +38,7 @@ public class MidasCafePushService extends MqttService implements MqttCallbackExt
 
     @Override
     public void onCreate() {
+        manager = new PrefManager(this);
         String ip_addr = "tcp://192.168.0.35:1883";
         MqttConnectOptions pushoptions = new MqttConnectOptions();
         pushoptions.setMqttVersion(MqttConnectOptions.MQTT_VERSION_3_1_1);
@@ -43,7 +46,7 @@ public class MidasCafePushService extends MqttService implements MqttCallbackExt
         pushoptions.setCleanSession(true);
         pushoptions.setUserName(clientID);
 
-        msgBox = "MIDASCafe_" + "tempName";
+        msgBox = "MIDASCafe_" + manager.getPrefString("userid");
         Log.e(TAG, msgBox);
 
         try {
