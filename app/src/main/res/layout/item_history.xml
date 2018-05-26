@@ -59,14 +59,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView_log_price" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/tv_history"
         android:layout_width="36dp"
         android:layout_height="40dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="20185/4"
+        android:text="20185/28"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="@+id/photoImageView"

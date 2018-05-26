@@ -17,6 +17,7 @@ import android.widget.Spinner;
 
 import com.midas2018mobile5.mobileapp.R;
 import com.midas2018mobile5.mobileapp.main.responses.OrderSearchResponse;
+import com.midas2018mobile5.mobileapp.main.utils.PrefManager;
 import com.midas2018mobile5.mobileapp.main.utils.RequestManager;
 import com.midas2018mobile5.mobileapp.model.OrderLog;
 import com.midas2018mobile5.mobileapp.recyclerview.MenuItemCellViewAdapter3;
@@ -27,6 +28,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import io.realm.annotations.PrimaryKey;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -39,6 +42,8 @@ public class UserFragment3 extends Fragment {
     RecyclerView.LayoutManager layoutManager;
     private ArrayList<Pair<Integer,Integer>> terms;
     private ArrayList<String> spinnerItems;
+    private List<OrderLog> menuItems = new ArrayList<OrderLog>();
+
     public UserFragment3() {
         // Required empty public constructor
     }
@@ -50,7 +55,6 @@ public class UserFragment3 extends Fragment {
 
         View rootview = inflater.inflate(R.layout.fragment_user_fragment3, container, false);
         // 리싸이클러
-        ArrayList<OrderLog> menuItems = new ArrayList<OrderLog>();
 
         mcontext = rootview.getContext();
         terms = new ArrayList<Pair<Integer,Integer>>();
@@ -76,10 +80,7 @@ public class UserFragment3 extends Fragment {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int index, long l) {
-                adapter.clearOrderItem();
-                int year = terms.get(index).first;
-                int month = terms.get(index).second;
-                List<OrderSearchResponse> logs = null;
+                new LoadMenuTask().execute();
                 /*try {
                     logs = RequestManager.getInstance().requestOrderLog("tempName");
                 } catch (IOException e) {
@@ -122,11 +123,6 @@ public class UserFragment3 extends Fragment {
 
 
         recyclerView = (RecyclerView) rootview.findViewById(R.id.recyclerview);
-        adapter = new MenuItemCellViewAdapter3(mcontext,menuItems);
-        layoutManager = new LinearLayoutManager(mcontext,LinearLayoutManager.VERTICAL,false);
-
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
 
 
         new UserFragment3.LoadMenuTask().execute();
@@ -142,7 +138,13 @@ public class UserFragment3 extends Fragment {
         protected Void doInBackground(Integer... integers) {
             List<OrderSearchResponse> logs;
             try {
-                logs =  RequestManager.getInstance().requestOrderLog("tempName");
+                PrefManager prefManager = new PrefManager(getContext());
+                String id = prefManager.getPrefString("id");
+                logs =  RequestManager.getInstance().requestOrderLog(id);
+                for(int i=0; i<logs.size(); i++) {
+                    OrderLog orderLog = new OrderLog(logs.get(i).getMenu(),logs.get(i).getPrice(),logs.get(i).getDate());
+                    menuItems.add(orderLog);
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -152,6 +154,11 @@ public class UserFragment3 extends Fragment {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
+            adapter = new MenuItemCellViewAdapter3(mcontext,menuItems);
+            layoutManager = new LinearLayoutManager(mcontext,LinearLayoutManager.VERTICAL,false);
+
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.setAdapter(adapter);
 
         }
     }

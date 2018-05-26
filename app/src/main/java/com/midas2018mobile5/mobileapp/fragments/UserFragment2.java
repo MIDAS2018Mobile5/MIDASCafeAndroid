@@ -14,6 +14,7 @@ import android.widget.Button;
 
 import com.midas2018mobile5.mobileapp.R;
 import com.midas2018mobile5.mobileapp.main.activities.CompleteOrderActivity;
+import com.midas2018mobile5.mobileapp.main.utils.PrefManager;
 import com.midas2018mobile5.mobileapp.main.utils.RealmManager;
 import com.midas2018mobile5.mobileapp.main.utils.RequestManager;
 import com.midas2018mobile5.mobileapp.model.CartItem;
@@ -79,9 +80,11 @@ public class UserFragment2 extends Fragment {
                 if(bid<0)
                     bid = -bid;
                 for(int i=0; i<results.size(); i++) {
+                    PrefManager prefManager = new PrefManager(getContext());
+                    String userid = prefManager.getPrefString("id");
                     String date = new SimpleDateFormat("yyyy-MM-dd",Locale.KOREA).format(new Date());
                     HashMap<String,Object> parameters = new HashMap<String,Object>();
-                    parameters.put("name","tempName");
+                    parameters.put("name",userid);
                     parameters.put("menu",results.get(i).getMenuName());
                    // parameters.put("count",results.get(i).getCount());
                     parameters.put("price",results.get(i).getPrice());

@@ -66,7 +66,8 @@ public class RequestManager {
      * @param parameters
      */
     public void requestLogin(HashMap<String, Object> parameters) {
-        APIClient.getInstance().create(LoginRequest.class).tryLogin(new LoginRequestData(parameters))
+        final LoginRequestData data = new LoginRequestData(parameters);
+        APIClient.getInstance().create(LoginRequest.class).tryLogin(data)
                 .enqueue(new Callback<LoginResponse>() {
                     @Override
                     public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
@@ -78,7 +79,7 @@ public class RequestManager {
                             APIClient.setToken(token);
                             Intent intent;
                             if(loginResponse.getRole().equals("USER")) {
-                                intent = new Intent(context, AdminActivity.class);
+                                intent = new Intent(context, UserActivity.class);
                                 context.startActivity(intent);
                             }
                             else {
@@ -174,7 +175,7 @@ public class RequestManager {
         return response;
     }
 
-    public List<UserInfoResponse> requestUserInfo() throws IOException {
+    public List<UserInfoResponse> requestUserInfo(String authorization) throws IOException {
         HashMap<String,Object> parameters = new HashMap<String,Object>();
         List<UserInfoResponse> response = APIClient.getInstance().create(UserInfoRequest.class).requestUserInfo("Token "+APIClient.getToken())
                 .execute().body();
