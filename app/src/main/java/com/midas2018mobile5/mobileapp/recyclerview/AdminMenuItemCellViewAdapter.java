@@ -56,6 +56,8 @@ public class AdminMenuItemCellViewAdapter extends RecyclerView.Adapter<AdminMenu
 
         Intent intent = new Intent(mContext, AdminMenuDetailActivity.class);
         intent.putExtra("item_position",position);
+        intent.putExtra("menu",item.getMenuName());
+        intent.putExtra("price",item.getPrice());
         mContext.startActivity(intent);
     }
 }

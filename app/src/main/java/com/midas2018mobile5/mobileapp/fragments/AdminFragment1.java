@@ -3,6 +3,7 @@ package com.midas2018mobile5.mobileapp.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -15,10 +16,12 @@ import android.view.ViewGroup;
 import com.midas2018mobile5.mobileapp.R;
 import com.midas2018mobile5.mobileapp.main.activities.MenuAddActivity;
 import com.midas2018mobile5.mobileapp.main.activities.UserActivity;
+import com.midas2018mobile5.mobileapp.main.utils.RequestManager;
 import com.midas2018mobile5.mobileapp.model.MenuItem;
 import com.midas2018mobile5.mobileapp.recyclerview.AdminMenuItemCellViewAdapter;
 import com.midas2018mobile5.mobileapp.recyclerview.MenuItemCellViewAdapter;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -30,7 +33,7 @@ public class AdminFragment1 extends Fragment {
     RecyclerView recyclerView;
     RecyclerView.Adapter adapter;
     RecyclerView.LayoutManager layoutManager;
-
+    private ArrayList<MenuItem> mMenuItems;
 
     public AdminFragment1() {
         // Required empty public constructor
@@ -43,8 +46,8 @@ public class AdminFragment1 extends Fragment {
         // Inflate the layout for this fragment
         View rootview = inflater.inflate(R.layout.fragment_admin_fragment1, container, false);
         mcontext = rootview.getContext();
+        recyclerView = (RecyclerView) rootview.findViewById(R.id.recyclerview);
 
-        ArrayList<MenuItem> menuItems = new ArrayList<>();
 //        for(int i=0;i<20;i++){
 //            MenuItem item = new MenuItem();
 //            item.title = "타이틀" + i;
@@ -53,13 +56,6 @@ public class AdminFragment1 extends Fragment {
 //        }
 
 
-        recyclerView = (RecyclerView) rootview.findViewById(R.id.recyclerview);
-        adapter = new AdminMenuItemCellViewAdapter(mcontext,menuItems);
-        layoutManager = new GridLayoutManager(mcontext,2);
-        //layoutManager = new LinearLayoutManager(mcontext,LinearLayoutManager.VERTICAL,false);
-
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
 
 
 
@@ -76,7 +72,34 @@ public class AdminFragment1 extends Fragment {
 
 
         // Inflate the layout for this fragment
+        new LoadAdminMenuTask().execute();
         return rootview;
+    }
+
+    class LoadAdminMenuTask extends AsyncTask<Integer, Integer, Void> {
+
+        @Override
+        protected Void doInBackground(Integer... integers) {
+            try {
+                mMenuItems =  RequestManager.getinstance().requestSearchMenu();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            adapter = new AdminMenuItemCellViewAdapter(mcontext, mMenuItems);
+            layoutManager = new GridLayoutManager(mcontext,2);
+            //layoutManager = new LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false);
+
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.setAdapter(adapter);
+
+
+        }
     }
 
 }

@@ -24,7 +24,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Spinner
-            android:id="@+id/spinner"
+            android:id="@+id/spinner_term"
             android:layout_width="250dp"
             android:layout_height="72dp"
             android:layout_marginTop="16dp"
@@ -48,7 +48,7 @@
             android:textSize="36sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinner" />
+            app:layout_constraintTop_toBottomOf="@+id/spinner_term" />
 
         <RadioGroup
             android:id="@+id/radioGroup"

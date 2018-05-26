@@ -24,7 +24,7 @@
         app:srcCompat="@drawable/france" />
 
     <TextView
-        android:id="@+id/textView_menu_name"
+        android:id="@+id/textView_log_price"
         android:layout_width="276dp"
         android:layout_height="34dp"
         android:layout_marginStart="10dp"
@@ -32,11 +32,11 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:textColor="@android:color/white"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView_sub"
+        app:layout_constraintBottom_toTopOf="@+id/textView_log_menus"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView_sub"
+        android:id="@+id/textView_log_menus"
         android:layout_width="wrap_content"
         android:layout_height="21dp"
         android:layout_marginBottom="10dp"
@@ -48,7 +48,7 @@
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/view4"
-        app:layout_constraintStart_toStartOf="@+id/textView_menu_name"
+        app:layout_constraintStart_toStartOf="@+id/textView_log_price"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <View

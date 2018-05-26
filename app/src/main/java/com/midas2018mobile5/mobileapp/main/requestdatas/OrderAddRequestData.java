@@ -9,15 +9,14 @@ import java.util.HashMap;
 public class OrderAddRequestData {
     private String name;
     private String menu;
-    private Integer count;
     private Integer price;
     private String date;
-
+    private Integer bid;
     public OrderAddRequestData(HashMap<String,Object> parameters) {
         name = (String)parameters.get("name");
         menu = (String)parameters.get("menu");
-        count = (Integer)parameters.get("count");
         price = (Integer)parameters.get("price");
         date = (String)parameters.get("date");
+        bid = (Integer)parameters.get("bid");
     }
 }

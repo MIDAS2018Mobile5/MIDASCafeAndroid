@@ -12,7 +12,7 @@ import retrofit2.http.Path;
  */
 
 public interface OrderUpdateRequest {
-    @PUT("/api/order/update/{id}")
-    Call<GeneralResponse> tryOrderUpdate(@Path("id") Integer id);
+    @PUT("/api/svc/order/update/{bid}")
+    Call<GeneralResponse> tryOrderUpdate(@Path("bid") Integer id);
 
 }

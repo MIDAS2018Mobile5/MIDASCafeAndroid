@@ -80,15 +80,18 @@ public class UserFragment2 extends Fragment {
             @Override
             public void onClick(View v) {
                 RealmResults<CartItem> results = RealmManager.getInstance().where(CartItem.class).findAll();
+                int bid = (int)new Date().getTime();
+                if(bid<0)
+                    bid = -bid;
                 for(int i=0; i<results.size(); i++) {
                     String date = new SimpleDateFormat("yyyy-MM-dd",Locale.KOREA).format(new Date());
                     HashMap<String,Object> parameters = new HashMap<String,Object>();
                     parameters.put("name","tempName");
                     parameters.put("menu",results.get(i).getMenuName());
-                    parameters.put("count",results.get(i).getCount());
+                   // parameters.put("count",results.get(i).getCount());
                     parameters.put("price",results.get(i).getPrice());
                     parameters.put("date",date);
-
+                    parameters.put("bid",bid);
                     RequestManager.getinstance().requestOrder(parameters);
                 }
                 RealmManager.clearRealm();

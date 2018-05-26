@@ -8,15 +8,18 @@ import com.midas2018mobile5.mobileapp.main.requestdatas.AddMenuRequestData;
 import com.midas2018mobile5.mobileapp.main.requestdatas.DeleteMenuRequestData;
 import com.midas2018mobile5.mobileapp.main.requestdatas.LoginRequestData;
 import com.midas2018mobile5.mobileapp.main.requestdatas.OrderAddRequestData;
+import com.midas2018mobile5.mobileapp.main.requestdatas.OrderSearchRequestData;
 import com.midas2018mobile5.mobileapp.main.requestdatas.SignUpRequestData;
 import com.midas2018mobile5.mobileapp.main.requests.AddMenuRequest;
 import com.midas2018mobile5.mobileapp.main.requests.DeleteMenuRequest;
 import com.midas2018mobile5.mobileapp.main.requests.LoginRequest;
 import com.midas2018mobile5.mobileapp.main.requests.OrderAddRequest;
+import com.midas2018mobile5.mobileapp.main.requests.OrderSearchRequest;
 import com.midas2018mobile5.mobileapp.main.requests.SearchMenuRequest;
 import com.midas2018mobile5.mobileapp.main.requests.SignUpRequest;
 import com.midas2018mobile5.mobileapp.main.responses.GeneralResponse;
 import com.midas2018mobile5.mobileapp.main.responses.LoginResponse;
+import com.midas2018mobile5.mobileapp.main.responses.OrderSearchResponse;
 import com.midas2018mobile5.mobileapp.main.responses.SearchMenuResponse;
 import com.midas2018mobile5.mobileapp.main.responses.SignUpResponse;
 import com.midas2018mobile5.mobileapp.model.MenuItem;
@@ -116,18 +119,12 @@ public class RequestManager {
     }
 
     public void requestDeleteMenu(HashMap<String, Object> parameters) {
-        APIClient.getInstance().create(DeleteMenuRequest.class).deleteMenu(new DeleteMenuRequestData(parameters))
-                .enqueue(new Callback<GeneralResponse>() {
-                    @Override
-                    public void onResponse(Call<GeneralResponse> call, Response<GeneralResponse> response) {
-
-                    }
-
-                    @Override
-                    public void onFailure(Call<GeneralResponse> call, Throwable t) {
-
-                    }
-                });
+        try {
+            APIClient.getInstance().create(DeleteMenuRequest.class).deleteMenu(new DeleteMenuRequestData(parameters))
+                    .execute().body();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public ArrayList<MenuItem> requestSearchMenu() throws IOException {
@@ -141,6 +138,15 @@ public class RequestManager {
             menu.add(item);
         }
         return menu;
+    }
+
+    public List<OrderSearchResponse> requestOrderLog(String userid) throws IOException{
+        final ArrayList<OrderSearchResponse> orderLog = new ArrayList<OrderSearchResponse>();
+        HashMap<String,Object> parameters = new HashMap<String,Object>();
+        parameters.put("userid",userid);
+        List<OrderSearchResponse> response = APIClient.getInstance().create(OrderSearchRequest.class).tryOrderSearch(new OrderSearchRequestData(parameters))
+                .execute().body();
+        return response;
     }
 
     public void requestOrder(HashMap<String,Object> data) {

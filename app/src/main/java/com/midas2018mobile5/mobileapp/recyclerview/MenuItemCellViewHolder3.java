@@ -10,15 +10,15 @@ import com.midas2018mobile5.mobileapp.R;
 public class MenuItemCellViewHolder3 extends RecyclerView.ViewHolder {
 
 
-    public TextView titleTextview;
-    public TextView subtitleTextView;
+    public TextView priceTextview;
+    public TextView menusTextView;
     public ImageView photoImageView;
 
     public MenuItemCellViewHolder3(View itemView) {
         super(itemView);
 
-        titleTextview = (TextView) itemView.findViewById(R.id.textView_menu_name);
-        subtitleTextView = (TextView) itemView.findViewById(R.id.textView_sub);
+        priceTextview = (TextView) itemView.findViewById(R.id.textView_log_price);
+        menusTextView = (TextView) itemView.findViewById(R.id.textView_log_menus);
         photoImageView = (ImageView) itemView.findViewById(R.id.photoImageView);
 
     }

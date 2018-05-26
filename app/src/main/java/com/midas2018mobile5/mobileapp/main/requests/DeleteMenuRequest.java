@@ -14,7 +14,7 @@ import retrofit2.http.POST;
  */
 
 public interface DeleteMenuRequest {
-    @DELETE("/api/cafe/delete")
+    @POST("/api/svc/cafe/delete")
     Call<GeneralResponse> deleteMenu(@Body DeleteMenuRequestData data);
 
 }

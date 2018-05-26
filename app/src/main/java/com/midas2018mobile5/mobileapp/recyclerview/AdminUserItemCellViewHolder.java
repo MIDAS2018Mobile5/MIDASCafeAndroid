@@ -2,7 +2,6 @@ package com.midas2018mobile5.mobileapp.recyclerview;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.midas2018mobile5.mobileapp.R;
@@ -20,8 +19,8 @@ public class AdminUserItemCellViewHolder extends RecyclerView.ViewHolder{
 
         this.mAdapter = mAdapter;
 
-        titleTextview = (TextView) itemView.findViewById(R.id.textView_menu_name);
-        subtitleTextView = (TextView) itemView.findViewById(R.id.textView_sub);
+        titleTextview = (TextView) itemView.findViewById(R.id.textView_log_price);
+        subtitleTextView = (TextView) itemView.findViewById(R.id.textView_log_menus);
 
     }
 }

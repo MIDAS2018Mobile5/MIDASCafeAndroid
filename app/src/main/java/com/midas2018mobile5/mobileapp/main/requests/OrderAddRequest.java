@@ -14,7 +14,7 @@ import retrofit2.http.POST;
  */
 
 public interface OrderAddRequest {
-    @POST("/api/order/add")
+    @POST("/api/svc/order/add")
     Call<GeneralResponse> tryOrder(@Body OrderAddRequestData data);
 
 }

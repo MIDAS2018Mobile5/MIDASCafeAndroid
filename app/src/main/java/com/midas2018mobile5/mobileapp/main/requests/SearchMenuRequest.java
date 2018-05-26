@@ -19,7 +19,7 @@ import retrofit2.http.POST;
  */
 
 public interface SearchMenuRequest {
-    @GET("/api/cafe/search")
+    @GET("/api/svc/cafe/search")
     Call<List<SearchMenuResponse>> searchMenu();
 
 }

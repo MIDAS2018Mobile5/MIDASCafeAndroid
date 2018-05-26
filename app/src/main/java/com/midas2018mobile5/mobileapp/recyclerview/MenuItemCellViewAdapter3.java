@@ -7,20 +7,26 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.midas2018mobile5.mobileapp.R;
-import com.midas2018mobile5.mobileapp.model.MenuItem;
+import com.midas2018mobile5.mobileapp.model.OrderLog;
 
 import java.util.ArrayList;
 
 public class MenuItemCellViewAdapter3 extends RecyclerView.Adapter<MenuItemCellViewHolder3> {
 
     private Context mContext;
-    private ArrayList<MenuItem> menuItems;
+    private ArrayList<OrderLog> orderItems;
 
-    public MenuItemCellViewAdapter3(Context context,ArrayList<MenuItem> menuItems){
+    public MenuItemCellViewAdapter3(Context context,ArrayList<OrderLog> menuItems){
         mContext = context;
-        this.menuItems = menuItems;
+        this.orderItems = menuItems;
     }
 
+    public void addOrderItem(OrderLog log) {
+        orderItems.add(log);
+    }
+    public void clearOrderItem() {
+        orderItems.clear();
+    }
     @NonNull
     @Override
     public MenuItemCellViewHolder3 onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -33,14 +39,14 @@ public class MenuItemCellViewAdapter3 extends RecyclerView.Adapter<MenuItemCellV
     @Override
     public void onBindViewHolder(@NonNull MenuItemCellViewHolder3 holder, int position) {
 
-        MenuItem item = menuItems.get(position);
+        OrderLog item = orderItems.get(position);
 
-        holder.titleTextview.setText(item.getMenuName());
-        holder.subtitleTextView.setText(item.getPrice().toString());
+        holder.priceTextview.setText(String.valueOf(item.getPriceSum()));
+        holder.menusTextView.setText(item.getMenus());
     }
 
     @Override
     public int getItemCount() {
-        return menuItems.size();
+        return orderItems.size();
     }
 }

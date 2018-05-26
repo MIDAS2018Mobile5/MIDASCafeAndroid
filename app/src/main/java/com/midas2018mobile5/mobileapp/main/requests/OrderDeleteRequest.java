@@ -14,7 +14,7 @@ import retrofit2.http.Path;
  */
 
 public interface OrderDeleteRequest {
-    @DELETE("/api/order/delete/{id}")
-    Call<GeneralResponse> tryOrderDelete(@Path("id") Integer id);
+    @DELETE("/api/svc/order/delete/{bid}")
+    Call<GeneralResponse> tryOrderDelete(@Path("bid") Integer bid);
 
 }

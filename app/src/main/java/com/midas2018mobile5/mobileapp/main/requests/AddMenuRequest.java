@@ -7,6 +7,7 @@ import com.midas2018mobile5.mobileapp.main.responses.LoginResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 /**
@@ -14,7 +15,7 @@ import retrofit2.http.POST;
  */
 
 public interface AddMenuRequest {
-    @POST("/api/cafe/add")
+    @POST("/api/svc/cafe/add")
     Call<GeneralResponse> addMenu(@Body AddMenuRequestData data);
 
 }

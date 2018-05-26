@@ -2,11 +2,12 @@ package com.midas2018mobile5.mobileapp.fragments;
 
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,12 +16,19 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.midas2018mobile5.mobileapp.R;
+import com.midas2018mobile5.mobileapp.main.responses.OrderSearchResponse;
+import com.midas2018mobile5.mobileapp.main.utils.RequestManager;
 import com.midas2018mobile5.mobileapp.model.MenuItem;
-import com.midas2018mobile5.mobileapp.recyclerview.MenuItemCellViewAdapter2;
+import com.midas2018mobile5.mobileapp.model.OrderLog;
 import com.midas2018mobile5.mobileapp.recyclerview.MenuItemCellViewAdapter3;
 
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,9 +37,10 @@ public class UserFragment3 extends Fragment {
 
     Context mcontext;
     RecyclerView recyclerView;
-    RecyclerView.Adapter adapter;
+    MenuItemCellViewAdapter3 adapter;
     RecyclerView.LayoutManager layoutManager;
-
+    private ArrayList<Pair<Integer,Integer>> terms;
+    private ArrayList<String> spinnerItems;
     public UserFragment3() {
         // Required empty public constructor
     }
@@ -42,16 +51,69 @@ public class UserFragment3 extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootview = inflater.inflate(R.layout.fragment_user_fragment3, container, false);
+        // 리싸이클러
+        ArrayList<OrderLog> menuItems = new ArrayList<OrderLog>();
+
         mcontext = rootview.getContext();
-
-
-        //스피너
-        Spinner spinner=(Spinner) rootview.findViewById(R.id.spinner);
+        terms = new ArrayList<Pair<Integer,Integer>>();
+        spinnerItems = new ArrayList<String>();
+        int year = Integer.parseInt(new SimpleDateFormat("yyyy", Locale.KOREA).format(new Date()));
+        int month = Integer.parseInt(new SimpleDateFormat("MM", Locale.KOREA).format(new Date()));
+        for(int i=0; i<5; i++) {
+            terms.add(new Pair<Integer,Integer>(year,month));
+            month--;
+            if(month<=0) {
+                month = 12;
+                year--;
+            }
+        }
+        for(int i=0; i<5; i++) {
+            spinnerItems.add(String.valueOf(terms.get(i).first)+"년 "+String.valueOf(terms.get(i).second)+"월");
+        }
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(rootview.getContext(),
+                R.layout.spinner_textview_layout, spinnerItems);
+        spinnerAdapter.setDropDownViewResource(R.layout.spinner_textview_layout);
+        Spinner spinner=(Spinner) rootview.findViewById(R.id.spinner_term);
+        spinner.setAdapter(spinnerAdapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String str = adapterView.getItemAtPosition(i).toString();
+            public void onItemSelected(AdapterView<?> adapterView, View view, int index, long l) {
+                adapter.clearOrderItem();
+                int year = terms.get(index).first;
+                int month = terms.get(index).second;
+                List<OrderSearchResponse> logs = null;
+                /*try {
+                    logs = RequestManager.getinstance().requestOrderLog("tempName");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                if(logs==null)
+                    return;
 
+                for(int i=0; i<logs.size(); i++) {
+                    int price = 0;
+                    String menu = "";
+                    OrderSearchResponse log = logs.get(i);
+                    int bid = log.getBid();
+                    for(int s=i; s<logs.size(); s++) {
+                        if(bid==logs.get(s).getBid()) {
+                            price+=logs.get(s).getPrice();
+                            menu+=(logs.get(s).getDate()+" ");
+                        }
+                        else {
+                            i = s;
+                            OrderLog orderLog = new OrderLog(menu,price,log.getDate());
+                            adapter.addOrderItem(orderLog);
+                        }
+                        if(s>=logs.size()-1) {
+                            i = logs.size() - 1;
+                            OrderLog orderLog = new OrderLog(menu,price,log.getDate());
+                            adapter.addOrderItem(orderLog);
+                        }
+
+                    }
+                }
+                adapter.notifyDataSetChanged();*/
             }
 
             @Override
@@ -60,33 +122,40 @@ public class UserFragment3 extends Fragment {
             }
         });
 
-        ArrayAdapter arrayAdapter = ArrayAdapter.createFromResource(mcontext, R.array.spinner_list, R.layout.spinner_textview_layout);
-        spinner.setAdapter(arrayAdapter);
-        spinner.setSelection(0);
-
-        // 리싸이클러
-        ArrayList<MenuItem> menuItems = new ArrayList<>();
-//        for(int i=0;i<20;i++){
-//            MenuItem item = new MenuItem();
-//            item.title = "15000원" + i;
-//            item.subtitle = "아메리카노 2, 카페라떼 2" + i;
-//            menuItems.add(item);
-//        }
-
 
         recyclerView = (RecyclerView) rootview.findViewById(R.id.recyclerview);
         adapter = new MenuItemCellViewAdapter3(mcontext,menuItems);
-        //layoutManager = new GridLayoutManager(mcontext,1);
         layoutManager = new LinearLayoutManager(mcontext,LinearLayoutManager.VERTICAL,false);
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
 
-
+        new UserFragment3.LoadMenuTask().execute();
         // Inflate the layout for this fragment
         return rootview;
 
+    }
+
+
+    class LoadMenuTask extends AsyncTask<Integer, Integer, Void> {
+
+        @Override
+        protected Void doInBackground(Integer... integers) {
+            List<OrderSearchResponse> logs;
+            try {
+                logs =  RequestManager.getinstance().requestOrderLog("tempName");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+
+        }
     }
 
 }
