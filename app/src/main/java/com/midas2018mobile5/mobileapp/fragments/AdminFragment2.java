@@ -2,7 +2,9 @@ package com.midas2018mobile5.mobileapp.fragments;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.midas2018mobile5.mobileapp.R;
+import com.midas2018mobile5.mobileapp.main.activities.AdminUserChangeActivity;
+import com.midas2018mobile5.mobileapp.main.activities.MenuAddActivity;
 import com.midas2018mobile5.mobileapp.model.MenuItem;
 import com.midas2018mobile5.mobileapp.recyclerview.AdminMenuItemCellViewAdapter;
 import com.midas2018mobile5.mobileapp.recyclerview.AdminUserItemCellViewAdapter;
@@ -44,12 +48,11 @@ public class AdminFragment2 extends Fragment {
         mcontext = rootview.getContext();
 
         ArrayList<MenuItem> menuItems = new ArrayList<>();
-//        for(int i=0;i<20;i++){
-//            MenuItem item = new MenuItem();
-//            item.title = "타이틀" + i;
-//            item.subtitle = "서브타이틀" + i;
-//            menuItems.add(item);
-//        }
+        for(int i=0;i<20;i++){
+            MenuItem item = new MenuItem("이름",100,1);
+
+            menuItems.add(item);
+       }
 
 
         recyclerView = (RecyclerView) rootview.findViewById(R.id.recyclerview);
@@ -58,6 +61,21 @@ public class AdminFragment2 extends Fragment {
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
+
+
+
+        //floatingActionButton
+        FloatingActionButton floatingActionButton = (FloatingActionButton)rootview.findViewById(R.id.floatingActionButton2);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //MenuItem item = menuItems.get(position);
+                Intent intent = new Intent(getContext(), AdminUserChangeActivity.class);
+                //intent.putExtra("item_position",position);
+                getContext().startActivity(intent);
+            }
+        });
+
 
         return rootview;
     }
