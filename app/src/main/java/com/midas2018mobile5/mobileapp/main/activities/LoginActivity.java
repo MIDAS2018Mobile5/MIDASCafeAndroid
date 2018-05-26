@@ -2,6 +2,7 @@ package com.midas2018mobile5.mobileapp.main.activities;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.util.Log;
 import android.view.View;
 
 import com.midas2018mobile5.mobileapp.R;
@@ -24,7 +25,7 @@ public class LoginActivity extends BaseActivity {
     }
 
     @Override
-    protected void onCreate() {
+        protected void onCreate() {
         binding = DataBindingUtil.setContentView(this,R.layout.activity_login);
 
         binding.loginBtn.setOnClickListener(new View.OnClickListener() {
@@ -46,8 +47,7 @@ public class LoginActivity extends BaseActivity {
                             }
 
                             @Override
-                            public void onFailure(Call<LoginResponse> call, Throwable t) {
-
+                            public void onFailure(Call<LoginResponse> call, Throwable t) {Log.d("awdawd","error");
                             }
                         });
             }

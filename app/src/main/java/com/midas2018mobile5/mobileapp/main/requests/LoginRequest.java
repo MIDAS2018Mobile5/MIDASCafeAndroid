@@ -5,6 +5,8 @@ import com.midas2018mobile5.mobileapp.main.responses.LoginResponse;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.Header;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 /**
@@ -12,8 +14,9 @@ import retrofit2.http.POST;
  */
 
 public interface LoginRequest {
+    @Headers("Content-Type: application/json")
     @POST("/api/account/signin")
     @FormUrlEncoded
-    Call<LoginResponse> tryLogin(@Field("name") String userID, @Field("password") String userSecret);
+    Call<LoginResponse> tryLogin(@Field("username") String userID, @Field("password") String userSecret);
 
 }
