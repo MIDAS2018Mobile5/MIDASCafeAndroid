@@ -45,6 +45,7 @@ public class AdminMenuDetailActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),MenuEditActivity.class);
                 //intent.putExtra("",);
+                intent.putExtra("name",menuName);
                 startActivity(intent);
             }
         });
