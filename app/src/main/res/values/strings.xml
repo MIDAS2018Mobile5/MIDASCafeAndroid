@@ -5,6 +5,7 @@
     <string name="signup">Sign Up</string>
     <string name="login">Log In</string>
     <string name="basic_info">계정 기본 정보</string>
+    <string name="user_name_hint">이름</string>
     <string name="id_hint">아이디</string>
     <string name="password_hint">비밀번호(6자 이상)</string>
     <string name="confirm_password_hint">비밀번호 확인</string>
