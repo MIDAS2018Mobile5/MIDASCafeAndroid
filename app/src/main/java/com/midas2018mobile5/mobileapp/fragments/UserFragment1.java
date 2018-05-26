@@ -29,11 +29,9 @@ public class UserFragment1 extends Fragment {
     RecyclerView.Adapter adapter;
     RecyclerView.LayoutManager layoutManager;
 
-
     public UserFragment1() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

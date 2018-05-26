@@ -1,5 +1,8 @@
 package com.midas2018mobile5.mobileapp.main.activities;
 
+import android.app.Activity;
+import android.app.ActivityManager;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -14,14 +17,20 @@ import com.midas2018mobile5.mobileapp.R;
 import com.midas2018mobile5.mobileapp.fragments.UserFragment1;
 import com.midas2018mobile5.mobileapp.fragments.UserFragment2;
 import com.midas2018mobile5.mobileapp.fragments.UserFragment3;
+import com.midas2018mobile5.mobileapp.main.service.MidasCafePushService;
 import com.midas2018mobile5.mobileapp.main.utils.RealmManager;
 
 public class UserActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
+
+        if(!isServiceRunning())
+            startService(new Intent(UserActivity.this, MidasCafePushService.class));
+
         RealmManager.init(getApplicationContext());
         //fragment4개
         Fragment[] arrFragments = new Fragment[3];
@@ -40,7 +49,15 @@ public class UserActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tabLayout);
         tabLayout.setupWithViewPager(viewPager);
         //view pager를 setup하면 getPageTitle에서 탭이름을 리턴해줘야함
+    }
 
+    private boolean isServiceRunning() {
+        ActivityManager manager = (ActivityManager)this.getSystemService(Activity.ACTIVITY_SERVICE);
+        for(ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if("com.midas2018mobile5.mobileapp.MidasCafePushService".equals(service.service.getClassName()))
+                return true;
+        }
+        return false;
     }
 }
 
