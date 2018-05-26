@@ -24,6 +24,13 @@
                     android:textSize="18dp" />
 
                 <com.midas2018mobile5.mobileapp.main.widgets.ClearEditText
+                    android:id="@+id/edt_signup_name"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:hint="@string/user_name_hint"
+                    android:inputType="textPassword" />
+
+                <com.midas2018mobile5.mobileapp.main.widgets.ClearEditText
                     android:id="@+id/edt_signup_id"
                     android:layout_width="300dp"
                     android:layout_height="50dp"
