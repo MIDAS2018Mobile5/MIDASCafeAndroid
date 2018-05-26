@@ -3,9 +3,11 @@ package com.midas2018mobile5.mobileapp.main.utils;
 import android.util.Log;
 
 import com.midas2018mobile5.mobileapp.main.requestdatas.AddMenuRequestData;
+import com.midas2018mobile5.mobileapp.main.requestdatas.DeleteMenuRequestData;
 import com.midas2018mobile5.mobileapp.main.requestdatas.LoginRequestData;
 import com.midas2018mobile5.mobileapp.main.requestdatas.SignUpRequestData;
 import com.midas2018mobile5.mobileapp.main.requests.AddMenuRequest;
+import com.midas2018mobile5.mobileapp.main.requests.DeleteMenuRequest;
 import com.midas2018mobile5.mobileapp.main.requests.LoginRequest;
 import com.midas2018mobile5.mobileapp.main.requests.SignUpRequest;
 import com.midas2018mobile5.mobileapp.main.responses.GeneralResponse;
@@ -91,6 +93,21 @@ public class RequestManager {
                             int code = response.raw().code();
                             String message = response.raw().message();
                         }
+                    }
+
+                    @Override
+                    public void onFailure(Call<GeneralResponse> call, Throwable t) {
+
+                    }
+                });
+    }
+
+    public void requestDeleteMenu(HashMap<String,Object> parameters) {
+        APIClient.getInstance().create(DeleteMenuRequest.class).deleteMenu(new DeleteMenuRequestData(parameters))
+                .enqueue(new Callback<GeneralResponse>() {
+                    @Override
+                    public void onResponse(Call<GeneralResponse> call, Response<GeneralResponse> response) {
+
                     }
 
                     @Override
