@@ -9,10 +9,10 @@ import java.util.HashMap;
 public class LoginRequestData {
     private String userid;
     private String password;
-
+    private String role;
     public LoginRequestData(HashMap<String, Object> parameters) {
         this.userid = (String)parameters.get("userid");
         this.password = (String)parameters.get("password");
-
+        this.role = (String)parameters.get("role");
     }
 }

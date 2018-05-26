@@ -76,8 +76,15 @@ public class RequestManager {
                             PrefManager prefManager = new PrefManager(context);
                             prefManager.putPrefString("token","Token "+token);
                             APIClient.setToken(token);
-                            Intent intent = new Intent(context,AdminActivity.class);
-                            context.startActivity(intent);
+                            Intent intent;
+                            if(loginResponse.getRole().equals("USER")) {
+                                intent = new Intent(context, AdminActivity.class);
+                                context.startActivity(intent);
+                            }
+                            else {
+                                intent = new Intent(context, AdminActivity.class);
+                                context.startActivity(intent);
+                            }
                         } else {
                             int code = response.raw().code();
                             String message = response.raw().message();

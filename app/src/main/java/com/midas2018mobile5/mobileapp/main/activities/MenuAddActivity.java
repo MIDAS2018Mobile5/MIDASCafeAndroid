@@ -23,7 +23,7 @@ public class MenuAddActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this,R.layout.activity_menu_add);
-        mBinding.imageButtonBack.setOnClickListener(new View.OnClickListener() {
+        mBinding.buttonMenuAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -38,8 +38,10 @@ public class MenuAddActivity extends AppCompatActivity {
             String menuName = mBinding.editTextName.getText().toString();
             int price = Integer.parseInt(mBinding.editTextPrice.getText().toString());
             HashMap<String,Object> parameters = new HashMap<String,Object>();
-//            parameters.put("")
-//            RequestManager.getInstance().requestAddMenu();
+            parameters.put("name",menuName);
+            parameters.put("price",price);
+            parameters.put("imgpath","path");
+            RequestManager.getInstance().requestAddMenu(parameters);
             return null;
         }
         @Override

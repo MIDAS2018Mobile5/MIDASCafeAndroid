@@ -8,11 +8,12 @@ import java.util.HashMap;
 
 public class AddMenuRequestData {
     private String name;
-    private String price;
-
+    private int price;
+    private String imgpath;
     public AddMenuRequestData(HashMap<String, Object> parameters) {
         this.name = (String)parameters.get("name");
-        this.price = (String)parameters.get("price");
+        this.price = (int)parameters.get("price");
+        this.imgpath = (String)parameters.get("imgpath");
 
     }
 }
