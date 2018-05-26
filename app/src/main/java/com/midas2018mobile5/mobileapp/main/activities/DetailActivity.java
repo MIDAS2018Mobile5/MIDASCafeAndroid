@@ -24,7 +24,6 @@ public class DetailActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(),UserActivity.class);
                 //intent.putExtra("",);
                 startActivity(intent);
-
             }
         });
 
