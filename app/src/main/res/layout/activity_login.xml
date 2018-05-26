@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -43,5 +42,6 @@
         android:textAllCaps="false"
         android:layout_alignTop="@+id/loginBtn"
         android:layout_alignEnd="@+id/account_PW" />
+
 </RelativeLayout>
 </layout>
