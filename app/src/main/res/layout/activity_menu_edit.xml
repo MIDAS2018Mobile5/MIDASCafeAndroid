@@ -21,7 +21,7 @@
         android:id="@+id/button_menu_add"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:background="@color/pink"
+        android:background="@color/mint"
         android:fontFamily="casual"
         android:text="메뉴 수정하기"
         android:textColor="@color/white"
