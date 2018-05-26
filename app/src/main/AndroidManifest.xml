@@ -21,15 +21,20 @@
             android:label="회원가입"
             android:screenOrientation="portrait" />
         <activity android:name=".main.activities.UserActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
+
         <activity android:name=".main.activities.DetailActivity" />
-        <activity android:name=".main.activities.BuydetailActivity" />
-        <activity android:name=".main.activities.AdminActivity"></activity>
+        <activity android:name=".main.activities.AdminActivity">
+
+        </activity>
+        <activity android:name=".main.activities.MenuAddActivity" />
+        <activity android:name=".main.activities.AdminMenuDetailActivity" />
+        <activity android:name=".main.activities.MenuEditActivity"></activity>
     </application>
 
 </manifest>

@@ -7,36 +7,35 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.midas2018mobile5.mobileapp.R;
+import com.midas2018mobile5.mobileapp.main.activities.AdminMenuDetailActivity;
 import com.midas2018mobile5.mobileapp.main.activities.DetailActivity;
 import com.midas2018mobile5.mobileapp.model.MenuItem;
 
 import java.util.ArrayList;
 
-public class MenuItemCellViewAdapter extends RecyclerView.Adapter<MenuItemCellViewHolder> {
+public class AdminMenuItemCellViewAdapter extends RecyclerView.Adapter<AdminMenuItemCellViewHolder> {
 
     private Context mContext;
     private ArrayList<MenuItem> menuItems;
 
-    public MenuItemCellViewAdapter(Context context,ArrayList<MenuItem> menuItems){
+    public AdminMenuItemCellViewAdapter(Context context,ArrayList<MenuItem> menuItems){
         mContext = context;
         this.menuItems = menuItems;
     }
 
-
     @NonNull
     @Override
-    public MenuItemCellViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdminMenuItemCellViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = View.inflate(mContext, R.layout.item_menu,null);
-        MenuItemCellViewHolder menuItemCellViewHolder = new MenuItemCellViewHolder(view,this);
+        AdminMenuItemCellViewHolder menuItemCellViewHolder = new AdminMenuItemCellViewHolder(view,this);
         return menuItemCellViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MenuItemCellViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AdminMenuItemCellViewHolder holder, int position) {
 
         MenuItem item = menuItems.get(position);
 
@@ -51,11 +50,11 @@ public class MenuItemCellViewAdapter extends RecyclerView.Adapter<MenuItemCellVi
 
 
     public void onItemClicked(int position){
+
         MenuItem item = menuItems.get(position);
         //Toast.makeText(mContext,item.title + position,Toast.LENGTH_SHORT).show();
-        Log.d("로그","클릭");
 
-        Intent intent = new Intent(mContext,DetailActivity.class);
+        Intent intent = new Intent(mContext, AdminMenuDetailActivity.class);
         intent.putExtra("item_position",position);
         mContext.startActivity(intent);
     }

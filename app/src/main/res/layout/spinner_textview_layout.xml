@@ -5,9 +5,13 @@
 
     android:textSize="30dp"
     android:fontFamily="casual"
+    android:textStyle="bold"
     android:textColor="@color/black"
 
     android:gravity="center"
+
+    android:drawableRight="@drawable/icon_keyboard_arrow_down_black_24dp"
+
     >
 
 </TextView>

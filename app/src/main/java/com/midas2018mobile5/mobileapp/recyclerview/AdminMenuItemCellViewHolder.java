@@ -7,24 +7,22 @@ import android.widget.TextView;
 
 import com.midas2018mobile5.mobileapp.R;
 
-public class MenuItemCellViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class AdminMenuItemCellViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
     public TextView titleTextview;
     public TextView subtitleTextView;
-    public ImageView photoImageView;
+
+    AdminMenuItemCellViewAdapter mAdapter;
 
 
-    MenuItemCellViewAdapter mAdapter;
+    public AdminMenuItemCellViewHolder(View itemView, AdminMenuItemCellViewAdapter mAdapter) {
 
-    public MenuItemCellViewHolder(View itemView,MenuItemCellViewAdapter mAdapter) {
         super(itemView);
 
         this.mAdapter = mAdapter;
 
         titleTextview = (TextView) itemView.findViewById(R.id.textView_menu_name);
         subtitleTextView = (TextView) itemView.findViewById(R.id.textView_sub);
-        photoImageView = (ImageView) itemView.findViewById(R.id.photoImageView);
-
 
         itemView.setOnClickListener(this);
 
@@ -40,14 +38,5 @@ public class MenuItemCellViewHolder extends RecyclerView.ViewHolder implements V
         // 현재 이 뷰가 몇번째에 있는지
         int position = getAdapterPosition();
         mAdapter.onItemClicked(position);
-
-        /*
-        switch (v.getId()){
-            case R.id.imageView:
-                mAdapter.onItemClicked(position);
-                break;
-        }
-        */
     }
 }
-

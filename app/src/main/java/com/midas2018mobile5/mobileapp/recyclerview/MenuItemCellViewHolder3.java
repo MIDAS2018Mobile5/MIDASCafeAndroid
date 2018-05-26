@@ -17,7 +17,7 @@ public class MenuItemCellViewHolder3 extends RecyclerView.ViewHolder {
     public MenuItemCellViewHolder3(View itemView) {
         super(itemView);
 
-        titleTextview = (TextView) itemView.findViewById(R.id.textView_title);
+        titleTextview = (TextView) itemView.findViewById(R.id.textView_menu_name);
         subtitleTextView = (TextView) itemView.findViewById(R.id.textView_sub);
         photoImageView = (ImageView) itemView.findViewById(R.id.photoImageView);
 

@@ -7,19 +7,21 @@ import android.widget.TextView;
 
 import com.midas2018mobile5.mobileapp.R;
 
-public class MenuItemCellViewHolder2 extends RecyclerView.ViewHolder {
+public class AdminUserItemCellViewHolder extends RecyclerView.ViewHolder{
 
     public TextView titleTextview;
     public TextView subtitleTextView;
-    public ImageView photoImageView;
 
-    public MenuItemCellViewHolder2(View itemView) {
+
+    AdminUserItemCellViewAdapter mAdapter;
+
+    public AdminUserItemCellViewHolder(View itemView, AdminUserItemCellViewAdapter mAdapter) {
         super(itemView);
+
+        this.mAdapter = mAdapter;
 
         titleTextview = (TextView) itemView.findViewById(R.id.textView_menu_name);
         subtitleTextView = (TextView) itemView.findViewById(R.id.textView_sub);
-        photoImageView = (ImageView) itemView.findViewById(R.id.photoImageView);
 
     }
 }
-

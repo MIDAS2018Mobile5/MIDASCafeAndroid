@@ -11,6 +11,8 @@ import android.os.Bundle;
 
 import com.midas2018mobile5.mobileapp.R;
 import com.midas2018mobile5.mobileapp.fragments.AdminFragment1;
+import com.midas2018mobile5.mobileapp.fragments.AdminFragment2;
+import com.midas2018mobile5.mobileapp.fragments.AdminFragment3;
 import com.midas2018mobile5.mobileapp.fragments.UserFragment1;
 import com.midas2018mobile5.mobileapp.fragments.UserFragment2;
 import com.midas2018mobile5.mobileapp.fragments.UserFragment3;
@@ -25,8 +27,8 @@ public class AdminActivity extends AppCompatActivity {
         //fragment4개
         Fragment[] arrFragments = new Fragment[3];
         arrFragments[0] = new AdminFragment1();
-        arrFragments[1] = new AdminFragment1();
-        arrFragments[2] = new AdminFragment1();
+        arrFragments[1] = new AdminFragment2();
+        arrFragments[2] = new AdminFragment3();
         //arrFragments[3] = new UserFragment1();
 
 
@@ -69,11 +71,11 @@ class AdminpagerAdapter extends FragmentPagerAdapter {
 
         switch (position) {
             case 0:
-                return "메뉴";
+                return "메뉴/이벤트 관리";
             case 1:
-                return "회원";
+                return "회원 관리";
             case 2:
-                return "예약";
+                return "예약 관리";
             case 3:
                 return "탭4";
             default:
