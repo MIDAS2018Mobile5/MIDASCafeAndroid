@@ -11,6 +11,8 @@ import android.os.Bundle;
 
 import com.midas2018mobile5.mobileapp.R;
 import com.midas2018mobile5.mobileapp.fragments.UserFragment1;
+import com.midas2018mobile5.mobileapp.fragments.UserFragment2;
+import com.midas2018mobile5.mobileapp.fragments.UserFragment3;
 
 public class UserActivity extends AppCompatActivity {
 
@@ -20,10 +22,10 @@ public class UserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user);
 
         //fragment4개
-        Fragment[] arrFragments = new Fragment[2];
+        Fragment[] arrFragments = new Fragment[3];
         arrFragments[0] = new UserFragment1();
-        arrFragments[1] = new UserFragment1();
-        //arrFragments[2] = new UserFragment1();
+        arrFragments[1] = new UserFragment2();
+        arrFragments[2] = new UserFragment3();
         //arrFragments[3] = new UserFragment1();
 
 
@@ -68,9 +70,9 @@ class MypagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return "메뉴";
             case 1:
-                return "마이페이지";
+                return "장바구니";
             case 2:
-                return "탭3";
+                return "구매현황";
             case 3:
                 return "탭4";
             default:

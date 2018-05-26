@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/icon_check_box_black_18dp" android:state_checked="true"/>
+    <item android:drawable="@drawable/icon_check_box_outline_blank_black_18dp" android:state_checked="false"/>
+
+</selector>
+
+    <!--출처: http://susemi99.tistory.com/1063 [쎄미 - 우물쭈물하다가 내 이럴 줄 알았지]-->
