@@ -26,7 +26,6 @@ public class MenuItemCellViewHolder2 extends RecyclerView.ViewHolder {
         imgBtnMinus = (ImageButton)itemView.findViewById(R.id.imgbtn_cart_minus);
         imgBtnPlus = (ImageButton)itemView.findViewById(R.id.imgbtn_cart_plus);
 
-
     }
 }
 

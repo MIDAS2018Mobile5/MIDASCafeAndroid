@@ -21,6 +21,7 @@ public class MenuItemCellViewHolder extends RecyclerView.ViewHolder implements V
 
         this.mAdapter = mAdapter;
 
+
         menuNameTextview = (TextView) itemView.findViewById(R.id.tv_menu_name);
         priceTextView = (TextView) itemView.findViewById(R.id.tv_price_sum);
         photoImageView = (ImageView) itemView.findViewById(R.id.photoImageView);

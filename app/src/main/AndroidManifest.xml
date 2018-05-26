@@ -26,9 +26,22 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity android:name=".main.activities.DetailActivity"></activity>
+
+        <activity android:name=".main.activities.DetailActivity" />
+        <activity android:name=".main.activities.AdminActivity">
+
+
+        </activity>
+
+
         <activity android:name=".main.activities.CompleteOrderActivity"></activity>
+
+        <activity android:name=".main.activities.MenuAddActivity" />
+        <activity android:name=".main.activities.AdminMenuDetailActivity" />
+        <activity android:name=".main.activities.MenuEditActivity"></activity>
+
     </application>
 
 </manifest>
