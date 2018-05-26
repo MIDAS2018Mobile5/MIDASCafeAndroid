@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.midas2018mobile5.mobileapp.R;
 import com.midas2018mobile5.mobileapp.main.activities.DetailActivity;
@@ -41,8 +40,8 @@ public class MenuItemCellViewAdapter extends RecyclerView.Adapter<MenuItemCellVi
 
         MenuItem item = menuItems.get(position);
 
-        holder.titleTextview.setText(item.title);
-        holder.subtitleTextView.setText(item.subtitle);
+        holder.menuNameTextview.setText(item.getMenuName());
+        holder.priceTextView.setText(item.getPrice().toString());
     }
 
     @Override
@@ -57,7 +56,9 @@ public class MenuItemCellViewAdapter extends RecyclerView.Adapter<MenuItemCellVi
         Log.d("로그","클릭");
 
         Intent intent = new Intent(mContext,DetailActivity.class);
-        intent.putExtra("item_position",position);
+        intent.putExtra("menuName",item.getMenuName());
+        intent.putExtra("price",item.getPrice());
+
         mContext.startActivity(intent);
     }
 }

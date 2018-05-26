@@ -16,31 +16,59 @@ public class MenuItemCellViewAdapter2 extends RecyclerView.Adapter<MenuItemCellV
     private Context mContext;
     private ArrayList<MenuItem> menuItems;
 
-    public MenuItemCellViewAdapter2(Context context,ArrayList<MenuItem> menuItems){
+    public MenuItemCellViewAdapter2(Context context, ArrayList<MenuItem> menuItems) {
         mContext = context;
         this.menuItems = menuItems;
+    }
+
+    public void addMenuItem(MenuItem item) {
+        menuItems.add(item);
     }
 
     @NonNull
     @Override
     public MenuItemCellViewHolder2 onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //item_cell
-        View view = View.inflate(mContext, R.layout.item_wish,null);
+        View view = View.inflate(mContext, R.layout.item_wish, null);
         MenuItemCellViewHolder2 menuItemCellViewHolder = new MenuItemCellViewHolder2(view);
         return menuItemCellViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MenuItemCellViewHolder2 holder, int position) {
+    public void onBindViewHolder(@NonNull final MenuItemCellViewHolder2 holder, int position) {
 
-        MenuItem item = menuItems.get(position);
-
-        holder.titleTextview.setText(item.title);
-        holder.subtitleTextView.setText(item.subtitle);
+        final MenuItem item = menuItems.get(position);
+        int sumPrice = item.getPrice() * item.getCount();
+        holder.menuNameTextview.setText(item.getMenuName());
+        holder.priceTextView.setText(((Integer) (sumPrice)).toString() + "원");
+        holder.countTextView.setText(item.getCount().toString());
+        holder.imgBtnPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int currentCount = Integer.parseInt(holder.countTextView.getText().toString());
+                if (currentCount < 99) {
+                    currentCount++;
+                    holder.countTextView.setText(String.valueOf(currentCount));
+                    holder.priceTextView.setText("총 " + String.valueOf((Integer) (currentCount * item.getPrice())).toString() + "원");
+                }
+            }
+        });
+        holder.imgBtnMinus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int currentCount = Integer.parseInt(holder.countTextView.getText().toString());
+                if (currentCount > 1) {
+                    currentCount--;
+                    holder.countTextView.setText(String.valueOf(currentCount));
+                    holder.priceTextView.setText("총 " + String.valueOf((Integer) (currentCount * item.getPrice())).toString() + "원");
+                }
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return menuItems.size();
     }
+
 }

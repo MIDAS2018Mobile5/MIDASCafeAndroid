@@ -1,5 +1,6 @@
 package com.midas2018mobile5.mobileapp.main.activities;
 
+import android.os.AsyncTask;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import com.midas2018mobile5.mobileapp.R;
 import com.midas2018mobile5.mobileapp.fragments.UserFragment1;
 import com.midas2018mobile5.mobileapp.fragments.UserFragment2;
 import com.midas2018mobile5.mobileapp.fragments.UserFragment3;
+import com.midas2018mobile5.mobileapp.main.utils.RealmManager;
 
 public class UserActivity extends AppCompatActivity {
 
@@ -20,7 +22,7 @@ public class UserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
-
+        RealmManager.init(getApplicationContext());
         //fragment4개
         Fragment[] arrFragments = new Fragment[3];
         arrFragments[0] = new UserFragment1();
@@ -38,6 +40,7 @@ public class UserActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tabLayout);
         tabLayout.setupWithViewPager(viewPager);
         //view pager를 setup하면 getPageTitle에서 탭이름을 리턴해줘야함
+
     }
 }
 
@@ -79,4 +82,6 @@ class MypagerAdapter extends FragmentPagerAdapter {
                 return "";
         }
     }
+
+
 }

@@ -43,7 +43,6 @@ public class LoginActivity extends BaseActivity {
                 parameters.put("userid", id);
                 parameters.put("password", password);
                 RequestManager.getinstance().requestLogin(parameters);
-
             }
         });
 

@@ -15,25 +15,20 @@
         <activity android:name=".main.activities.MainActivity" />
         <activity
             android:name=".main.activities.LoginActivity"
-            android:theme="@style/LoginTheme"></activity>
+            android:theme="@style/LoginTheme" />
         <activity
             android:name=".main.activities.SignUpActivity"
             android:label="회원가입"
             android:screenOrientation="portrait" />
         <activity android:name=".main.activities.UserActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
-        <activity android:name=".main.activities.DetailActivity">
-
-
-        </activity>
+        <activity android:name=".main.activities.DetailActivity"></activity>
+        <activity android:name=".main.activities.CompleteOrderActivity"></activity>
     </application>
 
 </manifest>

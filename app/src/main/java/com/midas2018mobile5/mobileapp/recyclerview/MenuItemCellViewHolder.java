@@ -9,8 +9,8 @@ import com.midas2018mobile5.mobileapp.R;
 
 public class MenuItemCellViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    public TextView titleTextview;
-    public TextView subtitleTextView;
+    public TextView menuNameTextview;
+    public TextView priceTextView;
     public ImageView photoImageView;
 
 
@@ -21,8 +21,8 @@ public class MenuItemCellViewHolder extends RecyclerView.ViewHolder implements V
 
         this.mAdapter = mAdapter;
 
-        titleTextview = (TextView) itemView.findViewById(R.id.textView_title);
-        subtitleTextView = (TextView) itemView.findViewById(R.id.textView_sub);
+        menuNameTextview = (TextView) itemView.findViewById(R.id.tv_menu_name);
+        priceTextView = (TextView) itemView.findViewById(R.id.tv_price_sum);
         photoImageView = (ImageView) itemView.findViewById(R.id.photoImageView);
 
 
