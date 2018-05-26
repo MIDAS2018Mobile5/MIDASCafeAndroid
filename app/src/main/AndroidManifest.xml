@@ -30,43 +30,29 @@
             android:name=".main.activities.SignUpActivity"
             android:label="회원가입"
             android:screenOrientation="portrait" />
-<<<<<<< HEAD
-        <activity android:name=".main.activities.UserActivity">
-=======
+
         <activity android:name=".main.activities.UserActivity" />
         <activity android:name=".main.activities.DetailActivity" />
         <activity android:name=".main.activities.AdminActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
->>>>>>> newui
-
-
-        </activity>
-<<<<<<< HEAD
-
-        <activity android:name=".main.activities.DetailActivity" />
-        <activity android:name=".main.activities.AdminActivity">
+            </intent-filter>
 
         </activity>
 
 
         <activity android:name=".main.activities.CompleteOrderActivity"></activity>
 
-=======
-        <activity android:name=".main.activities.CompleteOrderActivity" />
->>>>>>> newui
         <activity android:name=".main.activities.MenuAddActivity" />
         <activity android:name=".main.activities.AdminMenuDetailActivity" />
         <activity android:name=".main.activities.MenuEditActivity" />
         <activity android:name=".main.activities.AdminUserChangeActivity" />
-        <activity android:name=".main.activities.ReservationDetailActivity">
+        <activity android:name=".main.activities.ReservationDetailActivity"/>
 
-<<<<<<< HEAD
+
         <service android:name=".main.service.MidasCafePushService"/>
-=======
-        </activity>
->>>>>>> newui
+
     </application>
 
 </manifest>
