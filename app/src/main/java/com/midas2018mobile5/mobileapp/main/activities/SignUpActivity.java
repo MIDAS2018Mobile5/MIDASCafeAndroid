@@ -6,17 +6,9 @@ import android.view.View;
 import com.midas2018mobile5.mobileapp.R;
 import com.midas2018mobile5.mobileapp.base.BaseActivity;
 import com.midas2018mobile5.mobileapp.databinding.ActivitySignupBinding;
-import com.midas2018mobile5.mobileapp.main.requestdatas.SignUpRequestData;
-import com.midas2018mobile5.mobileapp.main.requests.SignUpRequest;
-import com.midas2018mobile5.mobileapp.main.responses.SignUpResponse;
-import com.midas2018mobile5.mobileapp.main.utils.APIClient;
 import com.midas2018mobile5.mobileapp.main.utils.RequestManager;
 
 import java.util.HashMap;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * Created by Ji Hoon on 2018-05-24.
@@ -44,7 +36,7 @@ public class SignUpActivity extends BaseActivity {
                 parameters.put("password",password);
                 parameters.put("username",name);
                 confirmPassword(password);
-                RequestManager.getinstance().requestSignUp(parameters);
+                RequestManager.getInstance().requestSignUp(parameters);
 
             }
         });

@@ -4,6 +4,7 @@ import com.midas2018mobile5.mobileapp.main.responses.GeneralResponse;
 
 import retrofit2.Call;
 import retrofit2.http.DELETE;
+import retrofit2.http.Header;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
@@ -13,6 +14,6 @@ import retrofit2.http.Path;
 
 public interface OrderUpdateRequest {
     @PUT("/api/svc/order/update/{bid}")
-    Call<GeneralResponse> tryOrderUpdate(@Path("bid") Integer id);
+    Call<GeneralResponse> tryOrderUpdate(@Header("Authorisation") String authorization, @Path("bid") Integer id);
 
 }

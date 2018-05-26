@@ -8,16 +8,29 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class LoginResponse {
-    @SerializedName("success")
+    @SerializedName("token")
     @Expose
-    private Boolean success;
+    private String token;
 
-    public Boolean getSuccess() {
-        return success;
+    public String getRole() {
+        return role;
     }
 
-    public void setSuccess(Boolean success) {
-        this.success = success;
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    @SerializedName("role")
+    @Expose
+    private String role;
+
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
 }

@@ -8,6 +8,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 /**
@@ -16,5 +17,5 @@ import retrofit2.http.POST;
 
 public interface UserInfoRequest {
     @POST("/api/svc/account/search")
-    Call<List<UserInfoResponse>> requestUserInfo();
+    Call<List<UserInfoResponse>> requestUserInfo(@Header("Authorisation") String authorization);
 }

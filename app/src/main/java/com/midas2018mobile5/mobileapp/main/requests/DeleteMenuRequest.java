@@ -7,6 +7,7 @@ import com.midas2018mobile5.mobileapp.main.responses.GeneralResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 /**
@@ -15,6 +16,6 @@ import retrofit2.http.POST;
 
 public interface DeleteMenuRequest {
     @POST("/api/svc/cafe/delete")
-    Call<GeneralResponse> deleteMenu(@Body DeleteMenuRequestData data);
+    Call<GeneralResponse> deleteMenu(@Header("Authorisation") String authorization, @Body DeleteMenuRequestData data);
 
 }

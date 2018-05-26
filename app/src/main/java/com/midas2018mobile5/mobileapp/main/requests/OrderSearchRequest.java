@@ -10,6 +10,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 /**
@@ -18,6 +19,6 @@ import retrofit2.http.POST;
 
 public interface OrderSearchRequest {
     @POST("/api/svc/order/search")
-    Call<List<OrderSearchResponse>> tryOrderSearch(@Body OrderSearchRequestData data);
+    Call<List<OrderSearchResponse>> tryOrderSearch(@Header("Authorisation") String authorization, @Body OrderSearchRequestData data);
 
 }

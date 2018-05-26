@@ -54,7 +54,7 @@ public class UserFragment1 extends Fragment {
         @Override
         protected Void doInBackground(Integer... integers) {
             try {
-                mMenuItems =  RequestManager.getinstance().requestSearchMenu();
+                mMenuItems =  RequestManager.getInstance().requestSearchMenu();
 
             } catch (IOException e) {
                 e.printStackTrace();

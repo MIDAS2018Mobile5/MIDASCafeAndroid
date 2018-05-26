@@ -5,10 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +14,6 @@ import android.widget.Button;
 
 import com.midas2018mobile5.mobileapp.R;
 import com.midas2018mobile5.mobileapp.main.activities.CompleteOrderActivity;
-import com.midas2018mobile5.mobileapp.main.activities.UserActivity;
 import com.midas2018mobile5.mobileapp.main.utils.RealmManager;
 import com.midas2018mobile5.mobileapp.main.utils.RequestManager;
 import com.midas2018mobile5.mobileapp.model.CartItem;
@@ -29,9 +26,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 
-import io.realm.Realm;
 import io.realm.RealmResults;
-import io.realm.annotations.PrimaryKey;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -92,7 +87,7 @@ public class UserFragment2 extends Fragment {
                     parameters.put("price",results.get(i).getPrice());
                     parameters.put("date",date);
                     parameters.put("bid",bid);
-                    RequestManager.getinstance().requestOrder(parameters);
+                    RequestManager.getInstance().requestOrder(parameters);
                 }
                 RealmManager.clearRealm();
                 Intent intent = new Intent(getActivity(), CompleteOrderActivity.class);

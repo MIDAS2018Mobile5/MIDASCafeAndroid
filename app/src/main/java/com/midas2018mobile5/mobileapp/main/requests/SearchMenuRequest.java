@@ -12,6 +12,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 /**
@@ -20,6 +21,6 @@ import retrofit2.http.POST;
 
 public interface SearchMenuRequest {
     @GET("/api/svc/cafe/search")
-    Call<List<SearchMenuResponse>> searchMenu();
+    Call<List<SearchMenuResponse>> searchMenu(@Header("Authorisation") String authorization);
 
 }

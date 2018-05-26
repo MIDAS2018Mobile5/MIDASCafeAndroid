@@ -15,11 +15,9 @@ import android.view.ViewGroup;
 
 import com.midas2018mobile5.mobileapp.R;
 import com.midas2018mobile5.mobileapp.main.activities.MenuAddActivity;
-import com.midas2018mobile5.mobileapp.main.activities.UserActivity;
 import com.midas2018mobile5.mobileapp.main.utils.RequestManager;
 import com.midas2018mobile5.mobileapp.model.MenuItem;
 import com.midas2018mobile5.mobileapp.recyclerview.AdminMenuItemCellViewAdapter;
-import com.midas2018mobile5.mobileapp.recyclerview.MenuItemCellViewAdapter;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -81,7 +79,7 @@ public class AdminFragment1 extends Fragment {
         @Override
         protected Void doInBackground(Integer... integers) {
             try {
-                mMenuItems =  RequestManager.getinstance().requestSearchMenu();
+                mMenuItems =  RequestManager.getInstance().requestSearchMenu();
 
             } catch (IOException e) {
                 e.printStackTrace();

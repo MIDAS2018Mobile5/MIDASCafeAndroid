@@ -18,14 +18,12 @@ import android.widget.Spinner;
 import com.midas2018mobile5.mobileapp.R;
 import com.midas2018mobile5.mobileapp.main.responses.OrderSearchResponse;
 import com.midas2018mobile5.mobileapp.main.utils.RequestManager;
-import com.midas2018mobile5.mobileapp.model.MenuItem;
 import com.midas2018mobile5.mobileapp.model.OrderLog;
 import com.midas2018mobile5.mobileapp.recyclerview.MenuItemCellViewAdapter3;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -83,7 +81,7 @@ public class UserFragment3 extends Fragment {
                 int month = terms.get(index).second;
                 List<OrderSearchResponse> logs = null;
                 /*try {
-                    logs = RequestManager.getinstance().requestOrderLog("tempName");
+                    logs = RequestManager.getInstance().requestOrderLog("tempName");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -144,7 +142,7 @@ public class UserFragment3 extends Fragment {
         protected Void doInBackground(Integer... integers) {
             List<OrderSearchResponse> logs;
             try {
-                logs =  RequestManager.getinstance().requestOrderLog("tempName");
+                logs =  RequestManager.getInstance().requestOrderLog("tempName");
             } catch (IOException e) {
                 e.printStackTrace();
             }

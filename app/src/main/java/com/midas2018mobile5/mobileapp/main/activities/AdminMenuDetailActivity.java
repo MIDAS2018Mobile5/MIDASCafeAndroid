@@ -5,18 +5,14 @@ import android.databinding.DataBindingUtil;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.midas2018mobile5.mobileapp.R;
 import com.midas2018mobile5.mobileapp.databinding.ActivityAdminMenuDetailBinding;
 import com.midas2018mobile5.mobileapp.main.utils.RequestManager;
-import com.midas2018mobile5.mobileapp.recyclerview.AdminMenuItemCellViewAdapter;
 
-import java.io.IOException;
 import java.util.HashMap;
 
 public class AdminMenuDetailActivity extends AppCompatActivity {
@@ -76,7 +72,7 @@ public class AdminMenuDetailActivity extends AppCompatActivity {
         protected Void doInBackground(Integer... integers) {
             HashMap<String,Object> parameters = new HashMap<String,Object>();
             parameters.put("name",menuName);
-            RequestManager.getinstance().requestDeleteMenu(parameters);
+            RequestManager.getInstance().requestDeleteMenu(parameters);
 
             return null;
         }

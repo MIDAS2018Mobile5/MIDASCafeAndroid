@@ -39,7 +39,7 @@ public class MenuAddActivity extends AppCompatActivity {
             int price = Integer.parseInt(mBinding.editTextPrice.getText().toString());
             HashMap<String,Object> parameters = new HashMap<String,Object>();
 //            parameters.put("")
-//            RequestManager.getinstance().requestAddMenu();
+//            RequestManager.getInstance().requestAddMenu();
             return null;
         }
         @Override

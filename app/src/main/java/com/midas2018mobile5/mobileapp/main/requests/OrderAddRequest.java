@@ -7,6 +7,7 @@ import com.midas2018mobile5.mobileapp.main.responses.LoginResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 /**
@@ -15,6 +16,6 @@ import retrofit2.http.POST;
 
 public interface OrderAddRequest {
     @POST("/api/svc/order/add")
-    Call<GeneralResponse> tryOrder(@Body OrderAddRequestData data);
+    Call<GeneralResponse> tryOrder(@Header("Authorisation") String authorization, @Body OrderAddRequestData data);
 
 }

@@ -16,6 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class APIClient {
     private static Retrofit retrofit = null;
+    private static String token = null;
     public static Retrofit getInstance() {
         if(retrofit==null) {
             HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
@@ -28,6 +29,14 @@ public class APIClient {
                     .build();
         }
         return retrofit;
+    }
+
+    public static void setToken(String _token) {
+        token = _token;
+    }
+
+    public static String getToken() {
+        return token;
     }
 
 
