@@ -3,6 +3,7 @@
 buildscript {
     ext {
         // 여기에 변수 내용을 입력합니다.
+        pahoVersion = "1.1.1"
     }
 
     repositories {
