@@ -7,6 +7,17 @@
     android:layout_height="match_parent"
     tools:context=".main.activities.LoginActivity">
 
+    <TextView
+        android:id="@+id/textView_midas_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="99dp"
+        android:fontFamily="casual"
+        android:text="MidasCafe"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
     <com.midas2018mobile5.mobileapp.main.widgets.ClearEditText
         android:id="@+id/account_ID"
         android:layout_width="300dp"
@@ -41,6 +52,8 @@
         android:textAllCaps="false"
         android:layout_alignTop="@+id/loginBtn"
         android:layout_alignEnd="@+id/account_PW" />
+
+
 
 </RelativeLayout>
 </layout>

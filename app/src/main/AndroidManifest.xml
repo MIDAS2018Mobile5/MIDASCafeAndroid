@@ -33,6 +33,7 @@
 
         <activity android:name=".main.activities.UserActivity" />
         <activity android:name=".main.activities.DetailActivity" />
+
         <activity android:name=".main.activities.AdminActivity">
 
             <intent-filter>

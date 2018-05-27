@@ -24,31 +24,31 @@
         app:srcCompat="@drawable/coffee3" />
 
     <TextView
-        android:id="@+id/textView_menu_name"
+        android:id="@+id/textView_order_menu_name"
         android:layout_width="276dp"
-        android:layout_height="34dp"
+        android:layout_height="39dp"
         android:layout_marginStart="10dp"
-        android:text="주문번호1"
+        android:text="주문번호"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:textColor="@android:color/white"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView_sub"
+        app:layout_constraintBottom_toTopOf="@+id/textView_order_user_name"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView_sub"
+        android:id="@+id/textView_order_user_name"
         android:layout_width="wrap_content"
         android:layout_height="21dp"
         android:layout_marginBottom="16dp"
         android:layout_marginTop="10dp"
         android:fontFamily="casual"
-        android:text="주문자 : 사용자1"
+        android:text="주문자 : 마이다스 직원1"
         android:textAlignment="center"
         android:textColor="@android:color/white"
-        android:textSize="12sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/view4"
-        app:layout_constraintStart_toStartOf="@+id/textView_menu_name"
+        app:layout_constraintStart_toStartOf="@+id/textView_order_menu_name"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <View

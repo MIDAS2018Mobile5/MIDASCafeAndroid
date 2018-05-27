@@ -8,9 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.midas2018mobile5.mobileapp.R;
-import com.midas2018mobile5.mobileapp.main.activities.AdminMenuDetailActivity;
 import com.midas2018mobile5.mobileapp.main.activities.ReservationDetailActivity;
 import com.midas2018mobile5.mobileapp.model.MenuItem;
+import com.midas2018mobile5.mobileapp.model.ReservationItem;
 
 import java.util.ArrayList;
 
@@ -18,11 +18,11 @@ public class AdminReservationItemCellViewAdapter extends RecyclerView.Adapter<Ad
 
 
     private Context mContext;
-    private ArrayList<MenuItem> menuItems;
+    private ArrayList<ReservationItem> reservationItems;
 
-    public AdminReservationItemCellViewAdapter(Context context, ArrayList<MenuItem> menuItems){
+    public AdminReservationItemCellViewAdapter(Context context, ArrayList<ReservationItem> menuItems){
         mContext = context;
-        this.menuItems = menuItems;
+        this.reservationItems = menuItems;
     }
 
     @NonNull
@@ -37,17 +37,21 @@ public class AdminReservationItemCellViewAdapter extends RecyclerView.Adapter<Ad
     @Override
     public void onBindViewHolder(@NonNull AdminReservationItemCellViewHolder holder, int position) {
 
+        ReservationItem item = reservationItems.get(position);
+
+        holder.titleTextview.setText("주문번호 " + item.getBid());
+        holder.subtitleTextView.setText(item.getName());
     }
 
     @Override
     public int getItemCount() {
-        return menuItems.size();
+        return reservationItems.size();
     }
 
 
     public void onItemClicked(int position){
 
-        MenuItem item = menuItems.get(position);
+        ReservationItem item = reservationItems.get(position);
 
         Intent intent = new Intent(mContext, ReservationDetailActivity.class);
         intent.putExtra("item_position",position);

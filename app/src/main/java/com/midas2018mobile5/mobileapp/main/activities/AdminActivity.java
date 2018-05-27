@@ -71,7 +71,7 @@ class AdminpagerAdapter extends FragmentPagerAdapter {
 
         switch (position) {
             case 0:
-                return "메뉴/이벤트 관리";
+                return "메뉴 관리";
             case 1:
                 return "회원 관리";
             case 2:

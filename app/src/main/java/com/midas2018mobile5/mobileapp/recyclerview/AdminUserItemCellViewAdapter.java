@@ -12,17 +12,18 @@ import com.midas2018mobile5.mobileapp.R;
 import com.midas2018mobile5.mobileapp.main.activities.AdminMenuDetailActivity;
 import com.midas2018mobile5.mobileapp.main.activities.AdminUserChangeActivity;
 import com.midas2018mobile5.mobileapp.model.MenuItem;
+import com.midas2018mobile5.mobileapp.model.UserItem;
 
 import java.util.ArrayList;
 
 public class AdminUserItemCellViewAdapter extends RecyclerView.Adapter<AdminUserItemCellViewHolder> implements View.OnClickListener {
 
     private Context mContext;
-    private ArrayList<MenuItem> menuItems;
+    private ArrayList<UserItem> userItems;
 
-    public AdminUserItemCellViewAdapter(Context context, ArrayList<MenuItem> menuItems){
+    public AdminUserItemCellViewAdapter(Context context, ArrayList<UserItem> userItems){
         mContext = context;
-        this.menuItems = menuItems;
+        this.userItems = userItems;
     }
 
     @NonNull
@@ -40,7 +41,7 @@ public class AdminUserItemCellViewAdapter extends RecyclerView.Adapter<AdminUser
 
     @Override
     public int getItemCount() {
-        return menuItems.size();
+        return userItems.size();
     }
 
 

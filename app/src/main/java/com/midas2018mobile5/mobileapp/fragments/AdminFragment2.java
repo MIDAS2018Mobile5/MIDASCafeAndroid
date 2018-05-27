@@ -17,6 +17,7 @@ import com.midas2018mobile5.mobileapp.R;
 import com.midas2018mobile5.mobileapp.main.activities.AdminUserChangeActivity;
 import com.midas2018mobile5.mobileapp.main.activities.MenuAddActivity;
 import com.midas2018mobile5.mobileapp.model.MenuItem;
+import com.midas2018mobile5.mobileapp.model.UserItem;
 import com.midas2018mobile5.mobileapp.recyclerview.AdminMenuItemCellViewAdapter;
 import com.midas2018mobile5.mobileapp.recyclerview.AdminUserItemCellViewAdapter;
 
@@ -47,16 +48,15 @@ public class AdminFragment2 extends Fragment {
 
         mcontext = rootview.getContext();
 
-        ArrayList<MenuItem> menuItems = new ArrayList<>();
+        ArrayList<UserItem> userItems = new ArrayList<>();
         for(int i=0;i<20;i++){
-            MenuItem item = new MenuItem("이름",100,1);
-
-            menuItems.add(item);
+            UserItem item = new UserItem("사용자"+i,"id"+i,"USER");
+            userItems.add(item);
        }
 
 
         recyclerView = (RecyclerView) rootview.findViewById(R.id.recyclerview);
-        adapter = new AdminUserItemCellViewAdapter(mcontext,menuItems);
+        adapter = new AdminUserItemCellViewAdapter(mcontext,userItems);
         layoutManager = new LinearLayoutManager(mcontext,LinearLayoutManager.VERTICAL,false);
 
         recyclerView.setLayoutManager(layoutManager);

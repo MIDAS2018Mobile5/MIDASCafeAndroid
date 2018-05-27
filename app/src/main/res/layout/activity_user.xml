@@ -24,7 +24,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:fontFamily="casual"
-        android:text="MidasChallenge"
+        android:text="MidasCafe"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/white"

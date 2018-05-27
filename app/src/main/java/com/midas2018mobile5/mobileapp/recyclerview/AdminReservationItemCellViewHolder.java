@@ -10,11 +10,17 @@ import com.midas2018mobile5.mobileapp.R;
 public class AdminReservationItemCellViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
     AdminReservationItemCellViewAdapter mAdapter;
+    public TextView titleTextview;
+    public TextView subtitleTextView;
 
     public AdminReservationItemCellViewHolder(View itemView, AdminReservationItemCellViewAdapter mAdapter) {
         super(itemView);
         this.mAdapter = mAdapter;
         itemView.setOnClickListener(this);
+
+
+        titleTextview = itemView.findViewById(R.id.textView_order_menu_name);
+        subtitleTextView = itemView.findViewById(R.id.textView_order_user_name);
     }
 
     @Override

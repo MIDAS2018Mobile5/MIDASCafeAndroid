@@ -39,6 +39,17 @@ public class MenuAddActivity extends AppCompatActivity implements View.OnClickLi
 
         imageView = findViewById(R.id.imageView_menu_photo_add);
         imageView.setOnClickListener(this);
+
+
+
+        // back button 추가
+        ImageButton backButton = findViewById(R.id.imageButton_back);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
 
