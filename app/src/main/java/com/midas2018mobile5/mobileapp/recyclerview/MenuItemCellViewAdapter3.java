@@ -10,13 +10,14 @@ import com.midas2018mobile5.mobileapp.R;
 import com.midas2018mobile5.mobileapp.model.OrderLog;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MenuItemCellViewAdapter3 extends RecyclerView.Adapter<MenuItemCellViewHolder3> {
 
     private Context mContext;
-    private ArrayList<OrderLog> orderItems;
+    private List<OrderLog> orderItems;
 
-    public MenuItemCellViewAdapter3(Context context,ArrayList<OrderLog> menuItems){
+    public MenuItemCellViewAdapter3(Context context,List<OrderLog> menuItems){
         mContext = context;
         this.orderItems = menuItems;
     }
@@ -41,7 +42,7 @@ public class MenuItemCellViewAdapter3 extends RecyclerView.Adapter<MenuItemCellV
 
         OrderLog item = orderItems.get(position);
 
-        holder.priceTextview.setText(String.valueOf(item.getPriceSum()));
+        holder.priceTextview.setText(String.valueOf(item.getPriceSum())+"원");
         holder.menusTextView.setText(item.getMenus());
     }
 

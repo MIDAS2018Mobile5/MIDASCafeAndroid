@@ -6,6 +6,10 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+
+import android.widget.ImageButton;
+import android.widget.ImageView;
+
 import android.widget.TextView;
 
 import com.midas2018mobile5.mobileapp.R;

@@ -7,6 +7,7 @@ import android.view.View;
 import com.midas2018mobile5.mobileapp.R;
 import com.midas2018mobile5.mobileapp.base.BaseActivity;
 import com.midas2018mobile5.mobileapp.databinding.ActivityLoginBinding;
+import com.midas2018mobile5.mobileapp.main.utils.PrefManager;
 import com.midas2018mobile5.mobileapp.main.utils.RequestManager;
 
 import java.util.HashMap;
@@ -32,6 +33,8 @@ public class LoginActivity extends BaseActivity {
                 parameters.put("userid", id);
                 parameters.put("password", password);
                 RequestManager.getInstance().requestLogin(parameters);
+                PrefManager prefManager = new PrefManager(getApplicationContext());
+                prefManager.putPrefString("id",id);
             }
         });
 

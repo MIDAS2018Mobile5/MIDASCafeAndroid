@@ -1,11 +1,13 @@
 package com.midas2018mobile5.mobileapp.main.activities;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.view.View;
 
 import com.midas2018mobile5.mobileapp.R;
 import com.midas2018mobile5.mobileapp.base.BaseActivity;
 import com.midas2018mobile5.mobileapp.databinding.ActivitySignupBinding;
+import com.midas2018mobile5.mobileapp.main.requests.SignUpRequest;
 import com.midas2018mobile5.mobileapp.main.utils.RequestManager;
 
 import java.util.HashMap;
@@ -37,6 +39,8 @@ public class SignUpActivity extends BaseActivity {
                 parameters.put("username",name);
                 confirmPassword(password);
                 RequestManager.getInstance().requestSignUp(parameters);
+                Intent intent = new Intent(SignUpActivity.this,LoginActivity.class);
+                startActivity(intent);
 
             }
         });
